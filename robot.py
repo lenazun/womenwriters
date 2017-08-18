@@ -4,11 +4,13 @@ from TwitterAPI import TwitterAPI
 import random
 import urllib
 from datetime import datetime
+import os
 
-api = TwitterAPI(consumer_key='Xj3BUbs0Rqk2Qe6hlKC83kDRJ',
-                consumer_secret='8D3WA2gumhLxBftFGHmTj36UbBywOGg1BTjMGDv1BOeE3g6caI',
-                access_token_key='898388599481057280-X4pVKf6RhIQR28rkV54L6zz7BqbhXma',
-                access_token_secret='5Nxa5EUCadRhv6XsyhLmX2h2KAq9jNsq9RjmIJPqVf6J5')
+
+api = TwitterAPI(consumer_key=os.environ.get('TWITTER_CONSUMER_KEY'),
+                 consumer_secret=os.environ.get('TWITTER_CONSUMER_SECRET'),
+                 access_token_key=os.environ.get('TWITTER_ACCESS_TOKEN_KEY'),
+				access_token_secret=os.environ.get('TWITTER_ACCESS_TOKEN_SECRET'))
 
 def get_data():
 
