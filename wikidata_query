@@ -1,0 +1,21 @@
+PREFIX schema: <http://schema.org/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT DISTINCT ?women ?womenLabel ?womenDescription ?date_of_birth ?Twitter_username ?image ?article WHERE {
+  ?women wdt:P31 wd:Q5.
+  ?women wdt:P21 wd:Q6581072.
+  ?women wdt:P106 wd:Q36180.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+  OPTIONAL { ?women wdt:P569 ?date_of_birth. }
+  OPTIONAL { ?women wdt:P2002 ?Twitter_username. }
+  OPTIONAL { ?women wdt:P18 ?image. }
+  {
+      ?article schema:about ?women.
+      ?article schema:inLanguage "en" .
+      ?article schema:isPartOf <https://en.wikipedia.org/> .
+    }
+  
+}
+LIMIT 100000000
