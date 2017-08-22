@@ -41,7 +41,7 @@ def make_tweet(writer):
         date_of_birth = ""
 
     try:
-        Twitter_username = "@" + writer['Twitter_username']
+        Twitter_username = " @" + writer['Twitter_username']
     except:
         Twitter_username = ""
 
